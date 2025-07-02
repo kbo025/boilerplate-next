@@ -1,0 +1,39 @@
+/* TailwindCSS Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables */
+$background-light: #ffffff;
+$foreground-light: #171717;
+$background-dark: #0a0a0a;
+$foreground-dark: #ededed;
+
+/* Variables CSS con :root */
+:root {
+  --background: #{$background-light};
+  --foreground: #{$foreground-light};
+}
+
+/* Tema inline */
+:root {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #{$background-dark};
+    --foreground: #{$foreground-dark};
+  }
+}
+
+/* Estilos globales */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
