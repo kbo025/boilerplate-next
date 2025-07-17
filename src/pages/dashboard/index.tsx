@@ -1,6 +1,5 @@
 import LoggedInLayout from "@/layouts/In.layout";
 
-
 export default function Dashboard() {
   return (
     <LoggedInLayout>

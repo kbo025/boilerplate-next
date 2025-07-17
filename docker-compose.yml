@@ -1,0 +1,13 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    # environment:
+      # Agrega aquí tus variables de entorno si las necesitas
+      # NEXT_PUBLIC_API_URL: "https://api.tuapp.com"
+    env_file:
+      - .env
+    restart: unless-stopped

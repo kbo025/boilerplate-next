@@ -1,6 +1,5 @@
 import LoggedOutLayout from "@/layouts/Out.layout";
 
-
 export default function Login() {
   return (
     <LoggedOutLayout>
