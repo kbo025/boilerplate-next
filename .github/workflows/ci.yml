@@ -56,12 +56,12 @@ jobs:
         context: .
         file: Dockerfile
         push: true
-        tags: us-central1-docker.pkg.dev/ntalks-466823/next-repo/next-app:latest
+        tags: us-central1-docker.pkg.dev/ntalks-466823/ntalks-repo/next-app:latest
 
     - name: Deploy to Cloud Run
       run: |
         gcloud run deploy next-app \
-          --image us-central1-docker.pkg.dev/ntalks-466823/next-repo/next-app:latest \
+          --image us-central1-docker.pkg.dev/ntalks-466823/ntalks-repo/next-app:latest \
           --region us-central1 \
           --platform managed \
           --allow-unauthenticated
