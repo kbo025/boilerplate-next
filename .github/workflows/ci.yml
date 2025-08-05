@@ -41,3 +41,27 @@ jobs:
         file: Dockerfile
         push: false
         tags:
+
+    - name: Authenticate with Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+    - name: Configure Docker to use Artifact Registry
+      run: gcloud auth configure-docker us-central1-docker.pkg.dev
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: Dockerfile
+        push: true
+        tags: us-central1-docker.pkg.dev/ntalks-466823/next-repo/next-app:latest
+
+    - name: Deploy to Cloud Run
+      run: |
+        gcloud run deploy next-app \
+          --image us-central1-docker.pkg.dev/ntalks-466823/next-repo/next-app:latest \
+          --region us-central1 \
+          --platform managed \
+          --allow-unauthenticated
